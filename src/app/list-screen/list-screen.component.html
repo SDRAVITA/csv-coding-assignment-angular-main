@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <input type="text" name="task" #task placeholder="Enter a task here" style="width: 600px; margin:10px;"> &nbsp; &nbsp;
+  <button class="btn btn-primary" class="btn btn-primary" type="submit" (click)="addTask(task.value)">Add</button>
+</div>
+<div id="layoutSidenav">
+  <div id="layoutSidenav_content">
+    <main>
+      <div class="container-fluid">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="table-responsive">
+              <span [hidden]="tasks">No task Found</span>
+              <table id="taskTable" class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Task Id</th>
+                    <th>Task Name</th>
+                    <th>Assignee ID</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let t of tasks | filerPipe:searchKey:'description'">
+                    <td>{{ t.id }}</td>
+                    <td>{{ t.description }}</td>
+                    <td>{{ t.assigneeId }}</td>
+                    <td>{{ t.completed }}</td>
+                    <td>
+                      <button class="btn btn-primary" style="margin: 10px;" (click)="TaskDetails(t.id)">Details</button>
+                      <button class="btn btn-primary"  style="margin: 10px;" [disabled]="t.completed" (click)="Complete(t.id,true)">Mark
+                        As Complete</button>
+                        <input type="text" name="aid" minlength="1" #aid placeholder="Enter a assignee id here" style="width: 200px; margin:10px;"> &nbsp; &nbsp;
+                        <button class="btn btn-primary" style="margin: 10px;" (click)="Assign(t.id,aid.value)">Assign</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

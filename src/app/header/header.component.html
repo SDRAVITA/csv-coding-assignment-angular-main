@@ -1,0 +1,13 @@
+<header>
+    <div class="navbar bg-dark">
+        <div class="navbar-brand d-flex">
+            <strong routerLink="home" style="font-size: 25px;margin-right: 50px; color:aliceblue">Task Management</strong>
+
+            <div class="form-group">
+                <input type="text" class="form-control" style="width: 600px;" [(ngModel)]="searchTerm" (keyup)="search($event)"
+                 placeholder="search tasks here">
+            </div>
+
+        </div>
+    </div>
+</header>
